@@ -160,7 +160,7 @@ function TrackingContent() {
             <div className="md:col-span-8 space-y-8">
               
               {/* Vertical Stepper Timeline */}
-              <div className="bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-850 p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
+              <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
                 <h4 className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-wider">Status Timeline</h4>
                 
                 <div className="relative border-l border-gray-200 dark:border-gray-800 pl-6 sm:pl-8 space-y-8">
@@ -185,7 +185,7 @@ function TrackingContent() {
 
                         <div className="space-y-1">
                           <h5 className={`text-sm font-extrabold transition-colors ${
-                            isActive ? 'text-primary dark:text-accent font-black' : isCompleted ? 'text-gray-800 dark:text-gray-250 font-bold' : 'text-gray-400 dark:text-gray-600'
+                            isActive ? 'text-primary dark:text-accent font-black' : isCompleted ? 'text-gray-800 dark:text-gray-300 font-bold' : 'text-gray-400 dark:text-gray-600'
                           }`}>
                             {statusLabels[s]}
                           </h5>
@@ -202,7 +202,7 @@ function TrackingContent() {
               </div>
 
               {/* Description & Evidence */}
-              <div className="bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-850 p-6 rounded-3xl shadow-sm space-y-4">
+              <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-6 rounded-3xl shadow-sm space-y-4">
                 <h4 className="text-sm font-black text-gray-900 dark:text-white uppercase tracking-wider">Complaint Details</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center text-xs font-bold border-b border-gray-100 dark:border-gray-800 pb-2">
@@ -219,17 +219,17 @@ function TrackingContent() {
                   </div>
                 </div>
                 <div className="pt-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400 font-semibold space-y-1.5">
-                  <span className="block font-black text-gray-850 dark:text-white">Issue Description:</span>
-                  <p className="bg-gray-50 dark:bg-gray-850 p-3.5 rounded-xl border border-gray-150 dark:border-gray-800">{complaint.description}</p>
+                  <span className="block font-black text-gray-800 dark:text-white">Issue Description:</span>
+                  <p className="bg-gray-50 dark:bg-gray-800 p-3.5 rounded-xl border border-gray-200 dark:border-gray-800">{complaint.description}</p>
                 </div>
 
                 {/* Evidence photos */}
                 {complaint.images && complaint.images.length > 0 && (
-                  <div className="pt-4 border-t border-gray-100 dark:border-gray-850">
+                  <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
                     <h5 className="text-xs font-black text-gray-800 dark:text-white mb-3">Attached Evidence</h5>
                     <div className="grid grid-cols-3 gap-3">
                       {complaint.images.map((url: string, index: number) => (
-                        <div key={index} className="relative aspect-square rounded-xl overflow-hidden border border-gray-150 dark:border-gray-850 bg-gray-100 dark:bg-gray-800">
+                        <div key={index} className="relative aspect-square rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800">
                           <img src={url} alt="Proof" className="h-full w-full object-cover" />
                         </div>
                       ))}
@@ -245,9 +245,9 @@ function TrackingContent() {
               
               {/* Interactive map coordinates if available */}
               {complaint.coordinates && (complaint.coordinates.lat || complaint.coordinates.lng) && (
-                <div className="p-4 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-850 rounded-3xl shadow-sm space-y-3">
+                <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-3">
                   <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Report Location Map</h4>
-                  <div className="h-[200px] rounded-xl overflow-hidden border border-gray-100 dark:border-gray-850">
+                  <div className="h-[200px] rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800">
                     <SafeMap
                       markers={[
                         {
@@ -267,8 +267,8 @@ function TrackingContent() {
               )}
 
               {/* Action logs history */}
-              <div className="p-5 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-850 rounded-3xl shadow-sm space-y-4">
-                <h4 className="text-xs font-bold text-gray-450 uppercase tracking-wider">Departmental Logs</h4>
+              <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-4">
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Departmental Logs</h4>
                 {complaint.notes && complaint.notes.length > 0 ? (
                   <div className="space-y-4">
                     {complaint.notes.map((note: any, idx: number) => (
@@ -302,8 +302,8 @@ function TrackingContent() {
 
       {/* Default placeholder illustration */}
       {!searched && !loading && (
-        <div className="text-center py-20 bg-white/40 dark:bg-gray-900/40 border border-dashed border-gray-300 dark:border-gray-850 rounded-3xl max-w-xl mx-auto">
-          <Clock className="h-12 w-12 text-gray-450 mx-auto mb-4" />
+        <div className="text-center py-20 bg-white/40 dark:bg-gray-900/40 border border-dashed border-gray-300 dark:border-gray-800 rounded-3xl max-w-xl mx-auto">
+          <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200">Waiting for Search Query</h3>
           <p className="text-xs text-gray-500 mt-1 max-w-xs mx-auto font-medium">
             Enter your tracking code above to retrieve live logs, resolution reports, and assigned departments.

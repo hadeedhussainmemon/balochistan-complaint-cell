@@ -106,7 +106,7 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
 
           {/* Images Grid Showcase */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="md:col-span-2 relative aspect-video w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 bg-gray-150 dark:bg-gray-900">
+            <div className="md:col-span-2 relative aspect-video w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 bg-gray-200 dark:bg-gray-900">
               <img
                 src={serializedLoc.images?.[0] || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}
                 alt={serializedLoc.title}
@@ -114,14 +114,14 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
               />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
-              <div className="relative aspect-video md:aspect-auto md:h-[calc(50%-8px)] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 bg-gray-150 dark:bg-gray-900">
+              <div className="relative aspect-video md:aspect-auto md:h-[calc(50%-8px)] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 bg-gray-200 dark:bg-gray-900">
                 <img
                   src={serializedLoc.images?.[1] || 'https://images.unsplash.com/photo-1506929562872-bb421503ef21'}
                   alt={serializedLoc.title}
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="relative aspect-video md:aspect-auto md:h-[calc(50%-8px)] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 bg-gray-150 dark:bg-gray-900 flex items-center justify-center text-center">
+              <div className="relative aspect-video md:aspect-auto md:h-[calc(50%-8px)] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 bg-gray-200 dark:bg-gray-900 flex items-center justify-center text-center">
                 <img
                   src={serializedLoc.images?.[0] || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}
                   alt={serializedLoc.title}
@@ -153,7 +153,7 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
                     {serializedLoc.attractions.map((attr: string, index: number) => (
                       <div
                         key={index}
-                        className="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800"
+                        className="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
                       >
                         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary dark:text-accent shrink-0">
                           <span className="text-[10px] font-black">{index + 1}</span>
@@ -166,7 +166,7 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
               )}
 
               {serializedLoc.directions && (
-                <div className="space-y-3 p-6 bg-gray-50 dark:bg-gray-800/30 border border-gray-150 dark:border-gray-800 rounded-2xl">
+                <div className="space-y-3 p-6 bg-gray-50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-800 rounded-2xl">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                     <Navigation className="h-5 w-5 text-secondary" />
                     How to Get There
@@ -183,9 +183,9 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
             <div className="lg:col-span-4 space-y-6 md:sticky md:top-24">
               
               {/* Mini Map */}
-              <div className="space-y-3 p-4 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 rounded-2xl shadow-sm">
+              <div className="space-y-3 p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
                 <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Map Coordinates</h4>
-                <div className="h-[220px] rounded-xl overflow-hidden border border-gray-100 dark:border-gray-850">
+                <div className="h-[220px] rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800">
                   <SafeMap
                     markers={mapMarkers}
                     center={[serializedLoc.coordinates.lat, serializedLoc.coordinates.lng]}
@@ -199,7 +199,7 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
 
               {/* Nearby Places */}
               {serializedLoc.nearbyPlaces && serializedLoc.nearbyPlaces.length > 0 && (
-                <div className="space-y-3 p-5 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 rounded-2xl shadow-sm">
+                <div className="space-y-3 p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm">
                   <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Nearby Places to Visit</h4>
                   <ul className="space-y-2 text-xs font-semibold text-gray-700 dark:text-gray-300">
                     {serializedLoc.nearbyPlaces.map((place: string, idx: number) => (

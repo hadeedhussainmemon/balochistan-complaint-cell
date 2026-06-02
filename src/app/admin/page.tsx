@@ -78,7 +78,7 @@ export default async function AdminDashboardPage() {
         {stats.map((item, idx) => (
           <div
             key={idx}
-            className="p-5 bg-gray-50 dark:bg-gray-800/40 border border-gray-150 dark:border-gray-800 rounded-2xl flex items-center justify-between shadow-sm hover:shadow-md transition-shadow"
+            className="p-5 bg-gray-50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-800 rounded-2xl flex items-center justify-between shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="space-y-1">
               <span className="text-xs text-gray-500 font-bold">{item.title}</span>

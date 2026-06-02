@@ -118,7 +118,7 @@ function LoginContent() {
           </Button>
 
           {/* Seeding Demo quick autofills */}
-          <div className="pt-5 border-t border-gray-150 dark:border-gray-800 space-y-3">
+          <div className="pt-5 border-t border-gray-200 dark:border-gray-800 space-y-3">
             <div className="flex items-center gap-1.5">
               <Sparkles className="h-4 w-4 text-secondary animate-pulse" />
               <span className="text-[10px] font-black uppercase text-gray-400">Demo Testing Fast Login</span>

@@ -133,7 +133,7 @@ export default function AdminComplaintsClient({ initialComplaints }: AdminCompla
     <div className="space-y-6">
       
       {/* Search and filter header */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-gray-50 dark:bg-gray-800/40 p-4 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-gray-50 dark:bg-gray-800/40 p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
         
         {/* Search */}
         <div className="md:col-span-4 relative">
@@ -181,9 +181,9 @@ export default function AdminComplaintsClient({ initialComplaints }: AdminCompla
       </div>
 
       {/* Grid listing table */}
-      <div className="overflow-x-auto border border-gray-150 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-900">
-        <table className="min-w-full divide-y divide-gray-150 dark:divide-gray-800 text-left text-xs font-bold text-gray-700 dark:text-gray-300">
-          <thead className="bg-gray-50 dark:bg-gray-850/40 text-gray-500 uppercase text-[10px] tracking-wider">
+      <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-900">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-left text-xs font-bold text-gray-700 dark:text-gray-300">
+          <thead className="bg-gray-50 dark:bg-gray-800/40 text-gray-500 uppercase text-[10px] tracking-wider">
             <tr>
               <th className="px-5 py-4">Complaint ID</th>
               <th className="px-5 py-4">Citizen</th>
@@ -253,7 +253,7 @@ export default function AdminComplaintsClient({ initialComplaints }: AdminCompla
           <form onSubmit={handleUpdate} className="space-y-4 py-2">
             
             {/* Overview Box */}
-            <div className="p-3 bg-gray-55 dark:bg-gray-800/40 border border-gray-150 dark:border-gray-800 rounded-2xl space-y-1.5">
+            <div className="p-3 bg-gray-100 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-800 rounded-2xl space-y-1.5">
               <div className="flex justify-between items-center text-xs font-bold">
                 <span className="text-gray-500">Tracking Number:</span>
                 <span className="text-gray-900 dark:text-white select-all">{selectedComplaint.complaintId}</span>
@@ -277,7 +277,7 @@ export default function AdminComplaintsClient({ initialComplaints }: AdminCompla
             {/* Description */}
             <div className="text-xs space-y-1">
               <span className="text-gray-500 font-bold">Issue Description:</span>
-              <p className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 leading-relaxed font-semibold text-gray-700 dark:text-gray-300">
+              <p className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800 leading-relaxed font-semibold text-gray-700 dark:text-gray-300">
                 {selectedComplaint.description}
               </p>
             </div>
@@ -297,7 +297,7 @@ export default function AdminComplaintsClient({ initialComplaints }: AdminCompla
             )}
 
             {/* Form Updates Controls */}
-            <div className="grid grid-cols-2 gap-4 pt-2 border-t border-gray-100 dark:border-gray-850">
+            <div className="grid grid-cols-2 gap-4 pt-2 border-t border-gray-100 dark:border-gray-800">
               
               {/* Status Select */}
               <div className="space-y-1">
@@ -342,9 +342,9 @@ export default function AdminComplaintsClient({ initialComplaints }: AdminCompla
               {selectedComplaint.notes && selectedComplaint.notes.length > 0 && (
                 <div className="space-y-2 max-h-[140px] overflow-y-auto pr-1">
                   {selectedComplaint.notes.map((n, idx) => (
-                    <div key={idx} className="p-2 border-l-2 border-primary bg-gray-50 dark:bg-gray-850 rounded-r-xl text-[10px] font-semibold leading-relaxed">
+                    <div key={idx} className="p-2 border-l-2 border-primary bg-gray-50 dark:bg-gray-800 rounded-r-xl text-[10px] font-semibold leading-relaxed">
                       <p className="text-gray-700 dark:text-gray-300">{n.text}</p>
-                      <div className="flex justify-between text-[9px] text-gray-450 mt-1">
+                      <div className="flex justify-between text-[9px] text-gray-400 mt-1">
                         <span>Officer: {n.author}</span>
                         <span>{new Date(n.createdAt).toLocaleDateString()}</span>
                       </div>

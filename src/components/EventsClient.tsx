@@ -152,7 +152,7 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
       >
         {selectedEvent && (
           <div className="space-y-4 py-2">
-            <div className="p-3.5 bg-gray-50 dark:bg-gray-800/40 border border-gray-150 dark:border-gray-800 rounded-2xl">
+            <div className="p-3.5 bg-gray-50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-800 rounded-2xl">
               <h4 className="text-sm font-extrabold text-gray-900 dark:text-white">{selectedEvent.title}</h4>
               <p className="text-[11px] text-gray-500 font-medium mt-1">
                 {new Date(selectedEvent.date).toLocaleDateString('en-US', {

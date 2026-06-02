@@ -99,7 +99,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           </div>
 
           {/* Featured Image */}
-          <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-xl border border-gray-150 dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
+          <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
             <img
               src={article.image}
               alt={article.title}
@@ -111,7 +111,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4">
             
             {/* Sidebar actions */}
-            <div className="md:col-span-3 space-y-6 md:sticky md:top-24 h-fit border-b md:border-b-0 md:border-r border-gray-250/20 dark:border-gray-800 pb-6 md:pb-0 md:pr-6">
+            <div className="md:col-span-3 space-y-6 md:sticky md:top-24 h-fit border-b md:border-b-0 md:border-r border-gray-300/20 dark:border-gray-800 pb-6 md:pb-0 md:pr-6">
               <div className="space-y-2">
                 <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Category</h4>
                 <div className="flex items-center gap-2 text-xs font-bold text-gray-700 dark:text-gray-300">
@@ -123,7 +123,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               <div className="space-y-2">
                 <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Share</h4>
                 <div className="flex gap-2">
-                  <button className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-850 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300">
+                  <button className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300">
                     <Share2 className="h-4 w-4" />
                   </button>
                 </div>

@@ -45,7 +45,7 @@ export default async function AdminLayout({
         <aside className="w-full md:w-64 shrink-0 space-y-2">
           
           {/* Dashboard Meta */}
-          <div className="p-4 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 rounded-2xl flex items-center gap-3">
+          <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl flex items-center gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary dark:text-accent border border-primary/20">
               <ShieldCheck className="h-5 w-5 text-secondary" />
             </div>
@@ -56,7 +56,7 @@ export default async function AdminLayout({
           </div>
 
           {/* Links list */}
-          <div className="bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 rounded-2xl p-2 space-y-1">
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-2 space-y-1">
             {sidebarLinks.map((link) => (
               <Link
                 key={link.name}
@@ -74,7 +74,7 @@ export default async function AdminLayout({
         </aside>
 
         {/* Content workspace (Col 9) */}
-        <main className="flex-1 min-w-0 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+        <main className="flex-1 min-w-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl p-6 sm:p-8 shadow-sm">
           {children}
         </main>
 

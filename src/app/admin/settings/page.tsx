@@ -89,7 +89,7 @@ export default function AdminSettingsPage() {
                 />
               </div>
 
-              <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-850 pt-4">
+              <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
                 <div>
                   <h4 className="text-xs font-bold text-gray-800 dark:text-gray-200 flex items-center gap-1">
                     <Mail className="h-4 w-4 text-secondary shrink-0" />
@@ -131,7 +131,7 @@ export default function AdminSettingsPage() {
                 />
               </div>
 
-              <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-850 pt-4">
+              <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
                 <div>
                   <h4 className="text-xs font-bold text-gray-800 dark:text-gray-200 flex items-center gap-1">
                     <Database className="h-4 w-4 text-secondary shrink-0" />
@@ -175,7 +175,7 @@ export default function AdminSettingsPage() {
             </div>
 
             {/* Add new District form */}
-            <form onSubmit={handleAddDistrict} className="flex gap-2 pt-2 border-t border-gray-100 dark:border-gray-850">
+            <form onSubmit={handleAddDistrict} className="flex gap-2 pt-2 border-t border-gray-100 dark:border-gray-800">
               <Input
                 placeholder="District name..."
                 value={newDistrict}

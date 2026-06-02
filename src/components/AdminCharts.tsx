@@ -71,7 +71,7 @@ export default function AdminCharts({ complaints }: AdminChartsProps) {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4">
       
       {/* Area Chart: Monthly Trend (Col 8) */}
-      <div className="lg:col-span-8 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 p-5 rounded-2xl shadow-sm space-y-4">
+      <div className="lg:col-span-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-5 rounded-2xl shadow-sm space-y-4">
         <div>
           <h4 className="text-sm font-bold text-gray-900 dark:text-white">Submission Trend</h4>
           <p className="text-[10px] text-gray-400 font-semibold mt-0.5">Monthly volume of registered citizen complaints.</p>
@@ -96,7 +96,7 @@ export default function AdminCharts({ complaints }: AdminChartsProps) {
       </div>
 
       {/* Pie Chart: Status Share (Col 4) */}
-      <div className="lg:col-span-4 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 p-5 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between">
+      <div className="lg:col-span-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-5 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between">
         <div>
           <h4 className="text-sm font-bold text-gray-900 dark:text-white">Status Breakdown</h4>
           <p className="text-[10px] text-gray-400 font-semibold mt-0.5">Audit allocations of closed, active and resolved complaints.</p>
@@ -125,7 +125,7 @@ export default function AdminCharts({ complaints }: AdminChartsProps) {
         {/* Custom Legends list */}
         <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
           {statusData.map((entry, idx) => (
-            <div key={idx} className="flex items-center gap-1.5 text-[10px] font-bold text-gray-650 dark:text-gray-450">
+            <div key={idx} className="flex items-center gap-1.5 text-[10px] font-bold text-gray-650 dark:text-gray-400">
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: COLORS[idx % COLORS.length] }}></span>
               <span>{entry.name} ({entry.value})</span>
             </div>
@@ -134,7 +134,7 @@ export default function AdminCharts({ complaints }: AdminChartsProps) {
       </div>
 
       {/* Bar Chart: Category Volume (Col 12) */}
-      <div className="lg:col-span-12 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 p-5 rounded-2xl shadow-sm space-y-4">
+      <div className="lg:col-span-12 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-5 rounded-2xl shadow-sm space-y-4">
         <div>
           <h4 className="text-sm font-bold text-gray-900 dark:text-white">Top Civic Issues Categories</h4>
           <p className="text-[10px] text-gray-400 font-semibold mt-0.5">Distribution of reports by major municipal departments.</p>

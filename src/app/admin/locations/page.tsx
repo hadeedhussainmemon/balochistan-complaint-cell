@@ -142,8 +142,8 @@ export default function AdminLocationsPage() {
       {/* Loading Skeletons */}
       {loading && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-pulse">
-          <div className="h-32 bg-gray-100 dark:bg-gray-855 rounded-2xl" />
-          <div className="h-32 bg-gray-100 dark:bg-gray-855 rounded-2xl" />
+          <div className="h-32 bg-gray-100 dark:bg-gray-800 rounded-2xl" />
+          <div className="h-32 bg-gray-100 dark:bg-gray-800 rounded-2xl" />
         </div>
       )}
 
@@ -152,20 +152,20 @@ export default function AdminLocationsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {locations.length > 0 ? (
             locations.map((loc) => (
-              <Card key={loc._id} className="p-4 border-gray-150 dark:border-gray-800 flex gap-4 hover:shadow-md transition-shadow relative group">
+              <Card key={loc._id} className="p-4 border-gray-200 dark:border-gray-800 flex gap-4 hover:shadow-md transition-shadow relative group">
                 <div className="h-20 w-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
                   <img src={loc.images?.[0]} alt={loc.title} className="h-full w-full object-cover" />
                 </div>
                 <div className="space-y-1.5 flex-1 min-w-0 pr-8">
                   <div className="flex items-center gap-2">
                     <Badge variant="secondary">{loc.category}</Badge>
-                    <span className="text-[10px] text-gray-405 font-bold flex items-center gap-0.5">
+                    <span className="text-[10px] text-gray-400 font-bold flex items-center gap-0.5">
                       <MapPin className="h-3 w-3" />
                       {loc.district}
                     </span>
                   </div>
                   <h4 className="text-sm font-black text-gray-900 dark:text-white truncate">{loc.title}</h4>
-                  <p className="text-[10px] text-gray-450 font-semibold leading-relaxed">
+                  <p className="text-[10px] text-gray-400 font-semibold leading-relaxed">
                     Lat: {loc.coordinates?.lat?.toFixed(3)} • Lng: {loc.coordinates?.lng?.toFixed(3)}
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function AdminLocationsPage() {
                 {/* Delete button absolute right corner */}
                 <button
                   onClick={() => handleDelete(loc._id)}
-                  className="absolute right-3 bottom-3 p-1.5 rounded-lg border border-red-150 hover:bg-red-50 text-red-500 dark:border-red-955/20 dark:hover:bg-red-955/10 transition-colors"
+                  className="absolute right-3 bottom-3 p-1.5 rounded-lg border border-red-200 hover:bg-red-50 text-red-500 dark:border-red-950/20 dark:hover:bg-red-950/10 transition-colors"
                   title="Delete location"
                 >
                   <Trash2 className="h-4 w-4" />

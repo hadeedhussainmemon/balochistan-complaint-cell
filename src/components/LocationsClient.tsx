@@ -113,7 +113,7 @@ export default function LocationsClient({ initialLocations }: LocationsClientPro
 
           {/* District selector dropdown */}
           <div className="flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 px-3 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-300">
-            <span className="text-gray-450 dark:text-gray-500 font-semibold">District:</span>
+            <span className="text-gray-400 dark:text-gray-500 font-semibold">District:</span>
             <select
               value={activeDistrict}
               onChange={(e) => setActiveDistrict(e.target.value)}
@@ -203,7 +203,7 @@ export default function LocationsClient({ initialLocations }: LocationsClientPro
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-3xl border border-gray-150 dark:border-gray-800 shadow-sm">
+        <div className="text-center py-16 bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
           <Compass className="h-12 w-12 text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200">No destinations found</h3>
           <p className="text-xs text-gray-500 mt-1 max-w-xs mx-auto font-medium">

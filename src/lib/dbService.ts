@@ -383,10 +383,16 @@ let mockTeam = [
   }
 ];
 
+let hasSeeded = false;
+
 // Helper to determine if we should use DB or Mock
 async function isDbConnected(): Promise<boolean> {
   try {
     const conn = await dbConnect();
+    if (conn && !hasSeeded) {
+      hasSeeded = true;
+      await seedDatabase();
+    }
     return !!conn;
   } catch {
     return false;
@@ -626,11 +632,15 @@ export async function seedDatabase() {
       }
     }
     
-    // Seed Events if empty
-    const eventCount = await Event.countDocuments();
-    if (eventCount === 0) {
-      await Event.insertMany(mockEvents);
-      console.log('Seeded events in database.');
+    // Seed Events if missing
+    for (const evt of mockEvents) {
+      const exists = await Event.findOne({ title: evt.title });
+      if (!exists) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { _id, ...dataWithoutId } = evt;
+        await Event.create(dataWithoutId);
+        console.log(`Seeded event: ${evt.title}`);
+      }
     }
 
     // Seed Locations if missing

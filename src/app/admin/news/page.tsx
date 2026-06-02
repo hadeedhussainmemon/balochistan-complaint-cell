@@ -113,8 +113,8 @@ export default function AdminNewsPage() {
       {/* Loading Skeletons */}
       {loading && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-pulse">
-          <div className="h-32 bg-gray-100 dark:bg-gray-850 rounded-2xl" />
-          <div className="h-32 bg-gray-100 dark:bg-gray-850 rounded-2xl" />
+          <div className="h-32 bg-gray-100 dark:bg-gray-800 rounded-2xl" />
+          <div className="h-32 bg-gray-100 dark:bg-gray-800 rounded-2xl" />
         </div>
       )}
 
@@ -123,7 +123,7 @@ export default function AdminNewsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {news.length > 0 ? (
             news.map((item) => (
-              <Card key={item._id} className="p-4 border-gray-150 dark:border-gray-800 flex gap-4 hover:shadow-md transition-shadow relative group">
+              <Card key={item._id} className="p-4 border-gray-200 dark:border-gray-800 flex gap-4 hover:shadow-md transition-shadow relative group">
                 <div className="h-20 w-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
                   <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
                 </div>
@@ -142,7 +142,7 @@ export default function AdminNewsPage() {
                 {/* Delete button absolute right corner */}
                 <button
                   onClick={() => handleDelete(item._id)}
-                  className="absolute right-3 bottom-3 p-1.5 rounded-lg border border-red-150 hover:bg-red-50 text-red-500 dark:border-red-950/20 dark:hover:bg-red-950/10 transition-colors"
+                  className="absolute right-3 bottom-3 p-1.5 rounded-lg border border-red-200 hover:bg-red-50 text-red-500 dark:border-red-950/20 dark:hover:bg-red-950/10 transition-colors"
                   title="Delete announcement"
                 >
                   <Trash2 className="h-4 w-4" />

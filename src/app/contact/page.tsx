@@ -84,7 +84,7 @@ export default function ContactPage() {
                       <ShieldAlert className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-gray-900 dark:text-gray-250">Provincial Disaster Management (PDMA)</p>
+                      <p className="text-xs font-bold text-gray-900 dark:text-gray-300">Provincial Disaster Management (PDMA)</p>
                       <p className="text-xs text-gray-500 font-semibold mt-0.5">Helpline: 1600 (Toll-Free)</p>
                     </div>
                   </div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                       <Phone className="h-5 w-5 text-secondary" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-gray-900 dark:text-gray-250">Civic Services Hub</p>
+                      <p className="text-xs font-bold text-gray-900 dark:text-gray-300">Civic Services Hub</p>
                       <p className="text-xs text-gray-500 font-semibold mt-0.5">Phone: +92 (81) 920-1111</p>
                     </div>
                   </div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                   <div className="flex gap-3">
                     <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="text-xs font-bold text-gray-900 dark:text-gray-250">Address</h4>
+                      <h4 className="text-xs font-bold text-gray-900 dark:text-gray-300">Address</h4>
                       <p className="text-xs text-gray-500 leading-relaxed font-semibold mt-0.5">
                         IT Department, Zarghoon Road, Civil Secretariat, Quetta, Pakistan
                       </p>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                   <div className="flex gap-3">
                     <Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="text-xs font-bold text-gray-900 dark:text-gray-250">Email Support</h4>
+                      <h4 className="text-xs font-bold text-gray-900 dark:text-gray-300">Email Support</h4>
                       <p className="text-xs text-gray-500 font-semibold mt-0.5">support@balochistan.gov.pk</p>
                     </div>
                   </div>

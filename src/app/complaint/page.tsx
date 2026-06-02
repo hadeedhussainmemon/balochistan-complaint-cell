@@ -401,7 +401,7 @@ export default function ComplaintPage() {
                                 : p === 'medium' ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
                                 : p === 'high' ? 'bg-orange-500 border-orange-500 text-white shadow-sm'
                                 : 'bg-red-650 border-red-650 text-white shadow-sm'
-                              : 'bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-55 dark:hover:bg-gray-850'
+                              : 'bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                           }`}>
                             {p}
                           </div>
@@ -436,7 +436,7 @@ export default function ComplaintPage() {
                 </div>
 
                 {/* Upload Section */}
-                <div className="border-2 border-dashed border-gray-300 dark:border-gray-850 p-6 rounded-2xl text-center hover:border-primary transition-colors relative">
+                <div className="border-2 border-dashed border-gray-300 dark:border-gray-800 p-6 rounded-2xl text-center hover:border-primary transition-colors relative">
                   <input
                     type="file"
                     multiple
@@ -472,7 +472,7 @@ export default function ComplaintPage() {
                 )}
 
                 {/* Short review summary */}
-                <div className="p-4 bg-gray-50 dark:bg-gray-800/40 rounded-2xl space-y-2 border border-gray-150 dark:border-gray-800">
+                <div className="p-4 bg-gray-50 dark:bg-gray-800/40 rounded-2xl space-y-2 border border-gray-200 dark:border-gray-800">
                   <h4 className="text-xs font-black uppercase text-gray-400">Review Summary</h4>
                   <div className="grid grid-cols-2 text-xs font-semibold gap-y-1">
                     <span className="text-gray-500">Submitter:</span>
@@ -511,7 +511,7 @@ export default function ComplaintPage() {
                   </p>
                 </div>
 
-                <div className="p-4 bg-gray-50 dark:bg-gray-800/40 rounded-2xl max-w-sm mx-auto border border-gray-150 dark:border-gray-800 space-y-1.5">
+                <div className="p-4 bg-gray-50 dark:bg-gray-800/40 rounded-2xl max-w-sm mx-auto border border-gray-200 dark:border-gray-800 space-y-1.5">
                   <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Tracking Number</p>
                   <p className="text-2xl font-black text-primary dark:text-accent select-all">
                     {submitResult.complaintId}
@@ -539,7 +539,7 @@ export default function ComplaintPage() {
 
             {/* Nav controls */}
             {step <= 4 && (
-              <div className="flex gap-4 mt-8 border-t border-gray-100 dark:border-gray-850 pt-5">
+              <div className="flex gap-4 mt-8 border-t border-gray-100 dark:border-gray-800 pt-5">
                 {step > 1 && (
                   <Button
                     type="button"
