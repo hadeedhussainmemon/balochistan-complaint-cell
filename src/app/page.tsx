@@ -73,7 +73,7 @@ export default async function HomePage() {
                 Discover Balochistan
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">
-                Featured Tourism Destinations
+                Featured Beautiful Locations
               </h2>
               <p className="text-sm text-gray-500 max-w-xl font-medium">
                 Explore the natural wonders, historical landmarks, and golden beaches of Pakistans largest province.

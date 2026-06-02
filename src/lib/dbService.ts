@@ -224,6 +224,66 @@ let mockLocations = [
     attractions: ['Scuba Diving & Coral Snorkeling', 'Deep Sea Fishing', 'Camping under the Stars', 'Green Turtle Spotting'],
     directions: 'Requires a drive to the coastal town of Pasni (approx 1.5 hours east of Gwadar), followed by a 3-hour boat ride (approx 39km) to the island.',
     nearbyPlaces: ['Pasni Coastal Town', 'Arabian Sea Marine Sanctuary'],
+  },
+  {
+    _id: 'l5',
+    title: 'Moola Chotok Oasis',
+    district: 'Khuzdar',
+    coordinates: { lat: 27.6897, lng: 67.1433 },
+    images: [
+      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&q=80&w=800'
+    ],
+    description: 'A hidden paradise tucked away in a deep ravine in Khuzdar district. Moola Chotok is a stunning water oasis featuring multiple crystal-clear freshwater springs and waterfalls flowing between high sandstone cliffs, providing a vibrant patch of green and blue in the arid desert terrain.',
+    category: 'Natural Attraction',
+    attractions: ['Deep Freshwater Pool Swimming', 'Sandstone Cliff Trekking', 'Hidden Waterfalls', 'Night Camping'],
+    directions: 'Take the N-25 highway to Khuzdar. From Khuzdar, hire a 4x4 vehicle for a rugged off-road journey of about 4 hours through the Moola gorge to reach the Chotok oasis.',
+    nearbyPlaces: ['Khuzdar Valley', 'Moola River Basin'],
+  },
+  {
+    _id: 'l6',
+    title: 'Pir Ghaib Waterfall',
+    district: 'Bolan',
+    coordinates: { lat: 29.8006, lng: 67.3003 },
+    images: [
+      'https://images.unsplash.com/photo-1433832597046-4f10e10ac764?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800'
+    ],
+    description: 'Pir Ghaib is a legendary waterfall flowing down a rocky mountainside into a natural blue lagoon, shaded by palm trees in the Bolan Valley. According to local folklore, a saint struck the rock to escape searchers, generating the spring water that flows to this day.',
+    category: 'Natural Attraction',
+    attractions: ['Natural Blue Lagoon Swims', 'Palm Tree Shaded Picnics', 'Bolan Gorge Hiking', 'Historic Cave Shrines'],
+    directions: 'Located about 70km south of Quetta, accessible via the Quetta-Sibi Highway in Bolan Gorge in approximately 2 hours.',
+    nearbyPlaces: ['Bolan Pass Canyons', 'Mach Town', 'Sibi Plains'],
+  },
+  {
+    _id: 'l7',
+    title: 'Mehrgarh Archaeological Site',
+    district: 'Kachhi',
+    coordinates: { lat: 29.3872, lng: 67.6167 },
+    images: [
+      'https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800'
+    ],
+    description: 'Mehrgarh is one of the most important Neolithic archaeological sites in the world, dating back to 7000 BCE. Pre-dating the Indus Valley Civilization, it represents some of the earliest evidence of farming, animal domestication, pottery, and dental surgery in South Asia.',
+    category: 'Historical Place',
+    attractions: ['Ancient Mud-brick Granaries', 'Archaeological Museum Displays', 'Neolithic Settlements Ruins', 'Kachhi Plain Scenic Drives'],
+    directions: 'Located in the Kachhi Plain near the Bolan Pass, approximately 140km south of Quetta. Accessible by 4x4 from Sibi or Quetta.',
+    nearbyPlaces: ['Bolan Pass Canyons', 'Sibi Town', 'Dhan River Valley'],
+  },
+  {
+    _id: 'l8',
+    title: 'Gadani Cliffs & Beach',
+    district: 'Hub',
+    coordinates: { lat: 25.1189, lng: 66.7294 },
+    images: [
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=800'
+    ],
+    description: 'Famous for its dramatic rocky coastline, Gadani Beach features golden sandy shores, natural rock arches, and dynamic tides where the Arabian Sea meets the desert cliffs. It is also home to one of the largest ship-breaking yards in the world.',
+    category: 'Coastal Point',
+    attractions: ['Rock Formations & Arches', 'Coastal Sunsets', 'Beach Combing & Swims', 'Ship-breaking Yards Viewpoints'],
+    directions: 'Located just 50km northwest of Karachi, easily accessible via the Hub River Road and Coastal Highway in about 1.5 hours.',
+    nearbyPlaces: ['Hub City', 'Sonmiani Beach Lagoon'],
   }
 ];
 
@@ -500,11 +560,15 @@ export async function seedDatabase() {
       console.log('Seeded events in database.');
     }
 
-    // Seed Locations if empty
-    const locationCount = await Location.countDocuments();
-    if (locationCount === 0) {
-      await Location.insertMany(mockLocations);
-      console.log('Seeded locations in database.');
+    // Seed Locations if missing
+    for (const loc of mockLocations) {
+      const exists = await Location.findOne({ title: loc.title });
+      if (!exists) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { _id, ...dataWithoutId } = loc;
+        await Location.create(dataWithoutId);
+        console.log(`Seeded location: ${loc.title}`);
+      }
     }
 
     // Seed Team if empty

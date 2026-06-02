@@ -7,7 +7,7 @@ import * as dbService from '@/lib/dbService';
 export const revalidate = 60; // ISR
 
 export const metadata = {
-  title: 'Tourism Destinations | Balochistan Connect',
+  title: 'Explore Locations | Balochistan Connect',
   description: 'Discover historical landmarks, scenic valleys, desert canyons, and untouched beaches like Kund Malir and Astola Island in Balochistan.',
 };
 
@@ -27,10 +27,10 @@ export default async function LocationsPage() {
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-primary dark:text-accent">
-              Balochistan Tourism
+              Balochistan Locations
             </span>
             <h1 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white leading-none">
-              Explore Tourism Destinations
+              Explore Beautiful Locations
             </h1>
             <p className="text-sm text-gray-600 dark:text-gray-400 max-w-lg mx-auto font-medium">
               Discover beautiful spots, scenic landscapes, and historic remnants of Pakistans largest province.

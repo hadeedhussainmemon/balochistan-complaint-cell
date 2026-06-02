@@ -72,7 +72,7 @@ export default function Hero() {
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-4 text-base font-bold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-2xl border border-gray-300 dark:border-gray-800 shadow-md transition-all duration-200 hover:-translate-y-0.5"
               >
                 <Map className="h-5 w-5 text-primary" />
-                Explore Tourism
+                Explore Locations
               </Link>
             </motion.div>
             

@@ -126,7 +126,7 @@ export default function AdminLocationsPage() {
       {/* Title Header */}
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-4">
         <div>
-          <h1 className="text-2xl font-black text-gray-900 dark:text-white">Tourism Showcase</h1>
+          <h1 className="text-2xl font-black text-gray-900 dark:text-white">Locations Showcase</h1>
           <p className="text-xs text-gray-500 mt-1">Manage natural attractions, heritage buildings, and coastal beaches.</p>
         </div>
         <Button
@@ -193,7 +193,7 @@ export default function AdminLocationsPage() {
       <Dialog
         isOpen={dialogOpen}
         onClose={() => setDialogOpen(false)}
-        title="Publish New Tourism Spot"
+        title="Publish New Location Spot"
       >
         <form onSubmit={handleCreate} className="space-y-4 py-2">
           

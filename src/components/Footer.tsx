@@ -19,7 +19,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Bridging the gap between the Government of Balochistan and its citizens. Digitalizing civic services, promoting regional tourism, and ensuring transparency.
+              Bridging the gap between the Government of Balochistan and its citizens. Digitalizing civic services, promoting regional locations, and ensuring transparency.
             </p>
           </div>
 
@@ -50,13 +50,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Tourism & Events */}
+          {/* Locations & Events */}
           <div>
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Explore</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/locations" className="hover:text-primary dark:hover:text-accent transition-colors">
-                  Tourism Destinations
+                  Explore Locations
                 </Link>
               </li>
               <li>

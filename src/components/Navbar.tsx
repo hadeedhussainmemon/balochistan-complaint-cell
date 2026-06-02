@@ -9,7 +9,7 @@ import { Sun, Moon, Menu, X, Landmark, ClipboardList, LogIn, LayoutDashboard, Lo
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Tourism', href: '/locations' },
+  { name: 'Locations', href: '/locations' },
   { name: 'News', href: '/news' },
   { name: 'Events', href: '/events' },
   { name: 'About', href: '/about' },

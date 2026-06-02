@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: LocationDetailPageProps) {
   const imageUrl = loc.images && loc.images.length > 0 ? loc.images[0] : "/og-image.png";
 
   return {
-    title: `${loc.title} - Tourism | Balochistan Connect`,
+    title: `${loc.title} - Location | Balochistan Connect`,
     description: loc.description.substring(0, 160),
     openGraph: {
-      title: `${loc.title} - Tourism | Balochistan Connect`,
+      title: `${loc.title} - Location | Balochistan Connect`,
       description: loc.description.substring(0, 160),
       images: [
         {
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: LocationDetailPageProps) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${loc.title} - Tourism | Balochistan Connect`,
+      title: `${loc.title} - Location | Balochistan Connect`,
       description: loc.description.substring(0, 160),
       images: [imageUrl],
     },
@@ -84,7 +84,7 @@ export default async function LocationDetailPage({ params }: LocationDetailPageP
               className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-primary dark:hover:text-accent transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Tourism Grid
+              Back to Locations
             </Link>
           </div>
 
