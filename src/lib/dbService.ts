@@ -129,6 +129,51 @@ let mockNews = [
     content: 'In line with the vision of digitalizing public administration, the IT Department of Balochistan has launched "Balochistan Connect". Citizens can now lodge civic complaints ranging from sewage and water blockages to power outages directly. The portal features automated tracking, SMS notifications, and an administrative dashboard for direct accountability of municipal and divisional officers.',
     category: 'Announcement',
     publishedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
+  },
+  {
+    _id: 'n4',
+    title: 'Chief Minister Approves Solarization of 30,000 Tube Wells',
+    slug: 'solarization-of-30000-tube-wells-balochistan',
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=800',
+    content: 'To tackle the ongoing electricity crisis and support agricultural development, the Balochistan Cabinet has approved a major initiative to convert over 30,000 agricultural tube wells to solar energy. The project, funded jointly by the federal and provincial governments, aims to reduce QESCO load requirements and ensure a steady supply of irrigation water to local farmers across Quetta, Khuzdar, and Mastung.',
+    category: 'Development',
+    publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+  },
+  {
+    _id: 'n5',
+    title: 'New Marine Conservation Initiative Launched for Astola Island',
+    slug: 'astola-island-marine-conservation-initiative',
+    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=800',
+    content: 'The Wildlife Department, in collaboration with international ecological bodies, has launched a comprehensive marine protection program for Astola Island. The initiative will strictly monitor illegal fishing trawlers, establish turtle nesting protection zones, and train Gwadar fishers in eco-friendly tourism operations. Astola was declared Pakistan’s first Marine Protected Area in 2017.',
+    category: 'Community',
+    publishedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+  },
+  {
+    _id: 'n6',
+    title: 'IT Board Announces Youth Skills Development Program 2026',
+    slug: 'youth-skills-development-program-2026',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800',
+    content: 'The Information Technology Board of Balochistan has launched a free youth training initiative targeting 10,000 students across the province. The curriculum features courses in web development, graphic design, content writing, and digital marketing. Local IT centers in Quetta, Loralai, Turbat, and Lasbela will host physical workshops with remote mentorship by industry leaders.',
+    category: 'Announcement',
+    publishedAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000),
+  },
+  {
+    _id: 'n7',
+    title: 'Government Plans Eco-Resort and Trails at Hingol National Park',
+    slug: 'hingol-national-park-eco-resort-trails',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800',
+    content: 'The Tourism Development Corporation of Balochistan (TDCB) has finalized plans for eco-friendly hiking trails, camping spots, and info centers inside Hingol National Park near Kund Malir. The project aims to accommodate the growing volume of local tourists visiting the Buzi Pass canyons while protecting the national park’s endangered wildlife including the Sindh Ibex and Balochistan Urial.',
+    category: 'Development',
+    publishedAt: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000),
+  },
+  {
+    _id: 'n8',
+    title: 'Master Saffron Farming Project Expansion in Mastung District',
+    slug: 'saffron-farming-project-expansion-mastung',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800',
+    content: 'Mastung farmers have successfully harvested high-grade saffron as part of an agricultural pilot program. Due to the high commercial value of saffron, the Agriculture Extension Department has announced subsidies on premium bulbs, soil testing, and modern drip irrigation kits for farmers in Kalat, Mastung, and Ziarat. Saffron cultivation is seen as a lucrative alternative to water-intensive traditional orchards.',
+    category: 'Community',
+    publishedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
   }
 ];
 
@@ -311,6 +356,30 @@ let mockTeam = [
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
     bio: 'Managing the operations, resolving dispatch escalations, and directing community events and tourism showcases.',
     socials: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com', email: 'dg.connect@balochistan.gov.pk', facebook: 'https://facebook.com' }
+  },
+  {
+    _id: 't4',
+    name: 'Sardar Ali Bugti',
+    role: 'Deputy Director, Civic Engagement',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800',
+    bio: 'Facilitating public hearings, gathering community feedback, and coordinating the rapid response municipal dispatch teams.',
+    socials: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com', email: 'sardar.ali@balochistan.gov.pk', facebook: '' }
+  },
+  {
+    _id: 't5',
+    name: 'Nadia Khan Achakzai',
+    role: 'Chief Technology Officer, IT Board',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800',
+    bio: 'Overseeing the server infrastructure, APIs, database scalability, and security layers of Balochistan Connect.',
+    socials: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com', email: 'n.achakzai@balochistan.gov.pk', facebook: 'https://facebook.com' }
+  },
+  {
+    _id: 't6',
+    name: 'Lt. Col. (R) Tariq Zehri',
+    role: 'Director of Operations, Disaster Response',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800',
+    bio: 'Leading emergency response coordination, integration of helplines with PDMA, and road infrastructure rescue ops.',
+    socials: { twitter: 'https://twitter.com', linkedin: 'https://linkedin.com', email: 'tariq.zehri@balochistan.gov.pk', facebook: '' }
   }
 ];
 
@@ -546,11 +615,15 @@ export async function seedDatabase() {
     const isConnected = await dbConnect();
     if (!isConnected) return;
     
-    // Seed News if empty
-    const newsCount = await News.countDocuments();
-    if (newsCount === 0) {
-      await News.insertMany(mockNews);
-      console.log('Seeded news in database.');
+    // Seed News if missing
+    for (const article of mockNews) {
+      const exists = await News.findOne({ slug: article.slug });
+      if (!exists) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { _id, ...dataWithoutId } = article;
+        await News.create(dataWithoutId);
+        console.log(`Seeded news article: ${article.title}`);
+      }
     }
     
     // Seed Events if empty
@@ -571,11 +644,15 @@ export async function seedDatabase() {
       }
     }
 
-    // Seed Team if empty
-    const teamCount = await Team.countDocuments();
-    if (teamCount === 0) {
-      await Team.insertMany(mockTeam);
-      console.log('Seeded team members in database.');
+    // Seed Team if missing
+    for (const member of mockTeam) {
+      const exists = await Team.findOne({ name: member.name });
+      if (!exists) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { _id, ...dataWithoutId } = member;
+        await Team.create(dataWithoutId);
+        console.log(`Seeded team member: ${member.name}`);
+      }
     }
     
     // Seed default admin in DB if missing
