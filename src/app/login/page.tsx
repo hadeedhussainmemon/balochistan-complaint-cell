@@ -9,6 +9,7 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import Card from '@/components/ui/card';
 import { LogIn, Key, Mail, ShieldAlert, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
 function LoginContent() {
   const router = useRouter();
@@ -116,6 +117,13 @@ function LoginContent() {
             <LogIn className="h-4 w-4 text-secondary" />
             Sign In
           </Button>
+
+          <div className="text-center text-xs font-bold text-gray-500 pt-1">
+            New citizen?{' '}
+            <Link href="/register" className="text-primary dark:text-accent hover:underline">
+              Create an account
+            </Link>
+          </div>
 
           {/* Seeding Demo quick autofills */}
           <div className="pt-5 border-t border-gray-200 dark:border-gray-800 space-y-3">

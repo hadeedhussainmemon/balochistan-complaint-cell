@@ -737,3 +737,24 @@ export async function updateUserPassword(email: string, currentPass: string, new
   }
   throw new Error('Incorrect current password or user not found.');
 }
+
+export async function createUser(data: any) {
+  if (await isDbConnected()) {
+    const exists = await User.findOne({ email: data.email.toLowerCase().trim() });
+    if (exists) {
+      throw new Error('Email is already registered.');
+    }
+    return await User.create({
+      name: data.name,
+      email: data.email.toLowerCase().trim(),
+      password: data.password,
+      role: 'citizen',
+    });
+  }
+  return {
+    name: data.name,
+    email: data.email,
+    password: data.password,
+    role: 'citizen',
+  };
+}

@@ -299,3 +299,23 @@ export async function getTeamAction() {
     return { success: false, error: error.message };
   }
 }
+
+export async function registerUserAction(data: {
+  name: string;
+  email: string;
+  password: string;
+}) {
+  try {
+    if (!data.name || !data.email || !data.password) {
+      return { success: false, error: 'All fields are required.' };
+    }
+    if (data.password.length < 6) {
+      return { success: false, error: 'Password must be at least 6 characters.' };
+    }
+    const user = await dbService.createUser(data);
+    return { success: true, data: JSON.parse(JSON.stringify(user)) };
+  } catch (error: any) {
+    console.error('Error registering user:', error);
+    return { success: false, error: error.message || 'Registration failed.' };
+  }
+}
