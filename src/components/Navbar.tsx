@@ -34,7 +34,7 @@ export default function Navbar() {
   const [modalError, setModalError] = useState('');
   const [modalSuccess, setModalSuccess] = useState('');
 
-  const user = session?.user as any;
+  const user = session?.user as { name?: string; email?: string; role?: string; id?: string } | undefined;
   const isAdmin = user?.role === 'admin';
 
   const handlePasswordChange = async (e: React.FormEvent) => {
@@ -79,8 +79,8 @@ export default function Navbar() {
       } else {
         setModalError(res.error || 'Failed to update password.');
       }
-    } catch (err: any) {
-      setModalError(err.message || 'An unexpected error occurred.');
+    } catch (err: unknown) {
+      setModalError(err instanceof Error ? err.message : 'An unexpected error occurred.');
     } finally {
       setModalLoading(false);
     }
