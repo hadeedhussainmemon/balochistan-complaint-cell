@@ -43,9 +43,13 @@ function TrackingContent() {
 
   useEffect(() => {
     if (status === 'authenticated' && session?.user) {
+      if ((session.user as any).role === 'admin') {
+        router.push('/admin');
+        return;
+      }
       fetchUserComplaints();
     }
-  }, [status, session]);
+  }, [status, session, router]);
 
   const fetchUserComplaints = async () => {
     setLoadingList(true);

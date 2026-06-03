@@ -136,21 +136,25 @@ export default function Navbar() {
             </button>
 
             {/* Quick Submit Complaint */}
-            <Link
-              href="/complaint"
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-md shadow-primary/15 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <ClipboardList className="h-4 w-4 text-secondary" />
-              File Complaint
-            </Link>
+            {!isAdmin && (
+              <Link
+                href="/complaint"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-md shadow-primary/15 transition-all duration-200 hover:-translate-y-0.5"
+              >
+                <ClipboardList className="h-4 w-4 text-secondary" />
+                File Complaint
+              </Link>
+            )}
 
             {/* Track Button */}
-            <Link
-              href="/track"
-              className="px-3 py-2 text-sm font-semibold rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-            >
-              Track
-            </Link>
+            {!isAdmin && (
+              <Link
+                href="/track"
+                className="px-3 py-2 text-sm font-semibold rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                Track
+              </Link>
+            )}
 
             {/* Auth Indicator */}
             {session ? (
@@ -266,22 +270,26 @@ export default function Navbar() {
           </div>
 
           <div className="border-t border-gray-100 dark:border-gray-800 pt-3 flex flex-col gap-2">
-            <Link
-              href="/complaint"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex justify-center items-center gap-2 w-full py-3 font-semibold text-white bg-primary rounded-xl"
-            >
-              <ClipboardList className="h-5 w-5 text-secondary" />
-              File Complaint
-            </Link>
+            {!isAdmin && (
+              <Link
+                href="/complaint"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex justify-center items-center gap-2 w-full py-3 font-semibold text-white bg-primary rounded-xl"
+              >
+                <ClipboardList className="h-5 w-5 text-secondary" />
+                File Complaint
+              </Link>
+            )}
 
-            <Link
-              href="/track"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex justify-center items-center w-full py-2.5 font-semibold rounded-xl border border-gray-300 dark:border-gray-700"
-            >
-              Track Complaint
-            </Link>
+            {!isAdmin && (
+              <Link
+                href="/track"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex justify-center items-center w-full py-2.5 font-semibold rounded-xl border border-gray-300 dark:border-gray-700"
+              >
+                Track Complaint
+              </Link>
+            )}
 
             {session ? (
               <div className="pt-2 border-t border-gray-100 dark:border-gray-800">

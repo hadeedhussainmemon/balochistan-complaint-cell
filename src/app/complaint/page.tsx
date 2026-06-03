@@ -47,8 +47,10 @@ export default function ComplaintPage() {
   useEffect(() => {
     if (status === 'unauthenticated') {
       router.push('/login?callbackUrl=/complaint');
+    } else if (session?.user && (session.user as any).role === 'admin') {
+      router.push('/admin');
     }
-  }, [status, router]);
+  }, [status, router, session]);
 
   useEffect(() => {
     if (session?.user) {
