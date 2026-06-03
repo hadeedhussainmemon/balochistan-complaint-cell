@@ -25,6 +25,7 @@ export async function submitComplaintAction(data: {
   area: string;
   images?: string[];
   coordinates?: { lat: number; lng: number };
+  userId?: string;
 }) {
   try {
     if (!data.name || !data.email || !data.phone || !data.category || !data.description || !data.district || !data.city || !data.area) {
@@ -51,6 +52,30 @@ export async function getComplaintByTrackingIdAction(trackingId: string) {
     return { success: true, data: JSON.parse(JSON.stringify(complaint)) };
   } catch (error: any) {
     return { success: false, error: error.message || 'Failed to search tracking ID.' };
+  }
+}
+
+export async function getComplaintsByUserAction(email: string, userId?: string) {
+  try {
+    if (!email) {
+      return { success: false, error: 'Email is required.' };
+    }
+    const complaints = await dbService.getComplaintsByUser(email, userId);
+    return { success: true, data: JSON.parse(JSON.stringify(complaints)) };
+  } catch (error: any) {
+    return { success: false, error: error.message || 'Failed to fetch user complaints.' };
+  }
+}
+
+export async function changePasswordAction(email: string, currentPass: string, newPass: string) {
+  try {
+    if (!email || !currentPass || !newPass) {
+      return { success: false, error: 'All fields are required.' };
+    }
+    await dbService.updateUserPassword(email, currentPass, newPass);
+    return { success: true, message: 'Password updated successfully.' };
+  } catch (error: any) {
+    return { success: false, error: error.message || 'Password update failed.' };
   }
 }
 

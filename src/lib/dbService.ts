@@ -410,6 +410,19 @@ export async function getComplaints() {
   return [...mockComplaints].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 }
 
+export async function getComplaintsByUser(email: string, userId?: string) {
+  if (await isDbConnected()) {
+    const conditions: any[] = [{ email: email }];
+    if (userId && /^[0-9a-fA-F]{24}$/.test(userId)) {
+      conditions.push({ userId: userId });
+    }
+    return await Complaint.find({ $or: conditions }).sort({ createdAt: -1 });
+  }
+  return mockComplaints
+    .filter(c => c.email === email || (userId && (c as any).userId === userId))
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+}
+
 export async function getComplaintById(id: string) {
   if (await isDbConnected()) {
     return await Complaint.findOne({ complaintId: id });
@@ -699,4 +712,28 @@ export async function seedDatabase() {
   } catch (err) {
     console.error('Seeding database failed:', err);
   }
+}
+
+export async function updateUserPassword(email: string, currentPass: string, newPass: string) {
+  if (await isDbConnected()) {
+    const user = await User.findOne({ email: email.toLowerCase().trim() });
+    if (!user) {
+      throw new Error('User not found.');
+    }
+    if (user.password !== currentPass) {
+      throw new Error('Incorrect current password.');
+    }
+    user.password = newPass;
+    await user.save();
+    return true;
+  }
+  
+  // Simple offline validation for mock purposes
+  if (email === 'admin@balochistan.gov.pk' && currentPass === 'admin123') {
+    return true;
+  }
+  if (email === 'citizen@balochistan.gov.pk' && currentPass === 'citizen123') {
+    return true;
+  }
+  throw new Error('Incorrect current password or user not found.');
 }

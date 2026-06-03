@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Button from '@/components/ui/button';
@@ -11,6 +11,8 @@ import Badge from '@/components/ui/badge';
 import { ClipboardList, User, MapPin, AlertTriangle, Image as ImageIcon, CheckCircle, ChevronRight, ChevronLeft, Paperclip, Trash2 } from 'lucide-react';
 import { submitComplaintAction } from '@/app/actions';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const districts = [
   'Quetta', 'Gwadar', 'Ziarat', 'Khuzdar', 'Lasbela', 'Hub', 'Sibi', 'Loralai', 'Pishin', 
@@ -32,12 +34,28 @@ const categories = [
 ];
 
 export default function ComplaintPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   const [step, setStep] = useState(1);
   
   // Step 1: Personal Details
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login?callbackUrl=/complaint');
+    }
+  }, [status, router]);
+
+  useEffect(() => {
+    if (session?.user) {
+      setName(session.user.name || '');
+      setEmail(session.user.email || '');
+    }
+  }, [session]);
   
   // Step 2: Location
   const [district, setDistrict] = useState(districts[0]);
@@ -57,6 +75,19 @@ export default function ComplaintPage() {
   
   const [loading, setLoading] = useState(false);
   const [submitResult, setSubmitResult] = useState<{ success: boolean; complaintId?: string; error?: string } | null>(null);
+
+  if (status === 'loading') {
+    return (
+      <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-950">
+        <Navbar />
+        <main className="flex-grow flex flex-col items-center justify-center py-16">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          <p className="mt-4 text-sm text-gray-500 font-medium dark:text-gray-400">Loading citizen profile...</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   const getGpsLocation = () => {
     if (!navigator.geolocation) {
@@ -153,6 +184,7 @@ export default function ComplaintPage() {
       area,
       images: imageUrls,
       coordinates: gps || undefined,
+      userId: (session?.user as any)?.id || undefined,
     };
 
     try {
@@ -238,6 +270,7 @@ export default function ComplaintPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
+                    disabled
                   />
                 </div>
 
@@ -249,6 +282,7 @@ export default function ComplaintPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    disabled
                   />
                 </div>
 

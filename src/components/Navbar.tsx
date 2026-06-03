@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useTheme } from './Providers';
-import { Sun, Moon, Menu, X, Landmark, ClipboardList, LogIn, LayoutDashboard, LogOut } from 'lucide-react';
+import { Sun, Moon, Menu, X, Landmark, ClipboardList, LogIn, LayoutDashboard, LogOut, Lock } from 'lucide-react';
+import { changePasswordAction } from '@/app/actions';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -24,8 +25,66 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  // Password change states
+  const [changePasswordOpen, setChangePasswordOpen] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [modalLoading, setModalLoading] = useState(false);
+  const [modalError, setModalError] = useState('');
+  const [modalSuccess, setModalSuccess] = useState('');
+
   const user = session?.user as any;
   const isAdmin = user?.role === 'admin';
+
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setModalError('');
+    setModalSuccess('');
+
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      setModalError('All fields are required.');
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setModalError('New passwords do not match.');
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      setModalError('Password must be at least 6 characters.');
+      return;
+    }
+
+    setModalLoading(true);
+    try {
+      const email = user?.email;
+      if (!email) {
+        setModalError('User session email not found.');
+        setModalLoading(false);
+        return;
+      }
+      
+      const res = await changePasswordAction(email, currentPassword, newPassword);
+      if (res.success) {
+        setModalSuccess('Password changed successfully!');
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        setTimeout(() => {
+          setChangePasswordOpen(false);
+          setModalSuccess('');
+        }, 2000);
+      } else {
+        setModalError(res.error || 'Failed to update password.');
+      }
+    } catch (err: any) {
+      setModalError(err.message || 'An unexpected error occurred.');
+    } finally {
+      setModalLoading(false);
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full glass shadow-sm transition-all duration-300">
@@ -130,9 +189,20 @@ export default function Navbar() {
                     <button
                       onClick={() => {
                         setDropdownOpen(false);
+                        setChangePasswordOpen(true);
+                      }}
+                      className="flex w-full items-center gap-2 px-3 py-2 text-sm rounded-lg text-gray-700 dark:text-gray-250 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                      <Lock className="h-4 w-4" />
+                      Change Password
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setDropdownOpen(false);
                         signOut({ callbackUrl: '/' });
                       }}
-                      className="flex w-full items-center gap-2 px-3 py-2 text-sm rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
+                      className="flex w-full items-center gap-2 px-3 py-2 text-sm rounded-lg text-red-650 hover:bg-red-55 dark:hover:bg-red-950/20 transition-colors border-t border-gray-150 dark:border-gray-800 mt-1 pt-1"
                     >
                       <LogOut className="h-4 w-4" />
                       Sign Out
@@ -232,9 +302,19 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
+                    setChangePasswordOpen(true);
+                  }}
+                  className="flex w-full items-center gap-2 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-55 dark:hover:bg-gray-800 font-medium text-left"
+                >
+                  <Lock className="h-5 w-5" />
+                  Change Password
+                </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
                     signOut({ callbackUrl: '/' });
                   }}
-                  className="flex w-full items-center gap-2 px-3 py-2.5 rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 font-medium text-left"
+                  className="flex w-full items-center gap-2 px-3 py-2.5 rounded-xl text-red-650 hover:bg-red-50 dark:hover:bg-red-950/20 font-medium text-left border-t border-gray-150 dark:border-gray-800 mt-1 pt-1.5"
                 >
                   <LogOut className="h-5 w-5" />
                   Sign Out
@@ -250,6 +330,108 @@ export default function Navbar() {
                 Sign In
               </Link>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Change Password Glassmorphic Modal */}
+      {changePasswordOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-white/20 bg-white/95 dark:bg-gray-900/95 p-6 shadow-2xl backdrop-blur-md">
+            
+            <div className="flex items-center justify-between border-b border-gray-150 dark:border-gray-800 pb-3 mb-4">
+              <h3 className="text-lg font-black text-gray-900 dark:text-white flex items-center gap-2">
+                <Lock className="h-5 w-5 text-primary" />
+                Change Password
+              </h3>
+              <button
+                onClick={() => {
+                  setChangePasswordOpen(false);
+                  setModalError('');
+                  setModalSuccess('');
+                  setCurrentPassword('');
+                  setNewPassword('');
+                  setConfirmPassword('');
+                }}
+                className="rounded-lg p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handlePasswordChange} className="space-y-4">
+              {modalError && (
+                <div className="p-3 text-xs font-bold text-red-650 bg-red-50 dark:bg-red-950/20 border border-red-200/50 rounded-xl text-center">
+                  {modalError}
+                </div>
+              )}
+              {modalSuccess && (
+                <div className="p-3 text-xs font-bold text-green-700 bg-green-50 dark:bg-green-950/20 border border-green-200/50 rounded-xl text-center animate-pulse">
+                  {modalSuccess}
+                </div>
+              )}
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-gray-600 dark:text-gray-400">Current Password</label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  className="flex w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-900 dark:text-white"
+                  required
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-gray-600 dark:text-gray-400">New Password</label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className="flex w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-900 dark:text-white"
+                  required
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-gray-600 dark:text-gray-400">Confirm New Password</label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="flex w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-gray-900 dark:text-white"
+                  required
+                />
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setChangePasswordOpen(false);
+                    setModalError('');
+                    setModalSuccess('');
+                    setCurrentPassword('');
+                    setNewPassword('');
+                    setConfirmPassword('');
+                  }}
+                  className="flex-1 px-4 py-2.5 text-xs font-bold rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={modalLoading}
+                  className="flex-1 px-4 py-2.5 text-xs font-bold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-md transition-all flex items-center justify-center"
+                >
+                  {modalLoading ? 'Updating...' : 'Update Password'}
+                </button>
+              </div>
+            </form>
+
           </div>
         </div>
       )}
